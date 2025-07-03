@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# ignorar archivos macOS
+.DS_Store
