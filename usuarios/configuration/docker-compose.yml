@@ -1,0 +1,27 @@
+name: act_3
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: ContDBpractMod3
+    restart: always
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: Admin
+      POSTGRES_PASSWORD: p4ssw0rdDB
+      POSTGRES_DB: credenciales
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  pgadmin4:
+    container_name: act3
+    image: dpage/pgadmin4:latest
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "80:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@infotec.com
+      PGADMIN_DEFAULT_PASSWORD: infotec
